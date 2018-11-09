@@ -1,6 +1,5 @@
 <div class="fileUpload" (click)='setTitleAndDescription()'>
     <h2 class="fileUploadText" >Upload a new angular component <i class="far fa-file-alt"></i></h2>
-    <input #fileInput type="file" name="fileInput" id="fileInput" class="fileInput" multiple (change)='uploadFile($event)'>
 </div> 
 
 <div class="titleAndDescription" id="addNewComponentInfo">
@@ -19,8 +18,9 @@
     
       <div class="addNewButtonsHolder">
           <button class="addNewBtn" (click)="fileInput.click()">UPLOAD FILES</button>
+          <input #fileInput type="file" name="fileInput" id="fileInput" class="fileInput" multiple (change)='uploadFile($event)'>
     
-          <button class="addNewBtn" (click)="submitNewComponent(title.value, description.value)">SUBMIT</button>
+          <button class="addNewBtn" (click)="submitNewComponent(title, description)">SUBMIT</button>
       </div>
 
       

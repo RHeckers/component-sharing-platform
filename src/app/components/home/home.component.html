@@ -17,7 +17,7 @@
  
 <div class="componentsHolder" *ngIf="components" >
   <div class="componentHolder" *ngFor="let component of components">
-      <app-single-component [title]='component.title' [names]='component.names' [code]='component.code' ></app-single-component>
+      <app-single-component [description]='component.description' [title]='component.title' [names]='component.names' [code]='component.code' ></app-single-component>
   </div>
    
 </div>

@@ -21,6 +21,9 @@ export class UploadNewComponentComponent implements OnInit {
   }
 
   setTitleAndDescription(){
+    this.uploadedFiles = [];
+    this.uploadedCode = [];
+    this.componentToAdd = {};
     this.addNewComponentInfo.style.display = 'block';
   }
 
@@ -46,12 +49,14 @@ export class UploadNewComponentComponent implements OnInit {
     console.log(this.uploadedCode);
     this.componentToAdd['names'] = this.uploadedFiles;
     this.componentToAdd['code'] = this.uploadedCode;
-    this.componentToAdd['title'] = title;
-    this.componentToAdd['description'] = description;
+    this.componentToAdd['title'] = title.value;
+    this.componentToAdd['description'] = description.value;
 
     //Send the newly created componented obj to the service, so It can be saved in the backend
     this.componentServie.addComponent(this.componentToAdd as ComponentModel)
     this.addNewComponentInfo.style.display = 'none';
+    title.value = '';
+    description.value = '';
   }
 
 }

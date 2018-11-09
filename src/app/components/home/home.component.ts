@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   pageTitle: string;
 
   constructor(private componentServie: ComponentsService) { 
-    this.componentServie.updatedCollections.subscribe(val => this.components = [...this.components, ...val])
+    this.componentServie.updatedCollections.subscribe(val => this.components = [...val])
     console.log(this.components.length)
   }
 

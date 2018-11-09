@@ -10,6 +10,7 @@ export class SingleComponentComponent implements OnInit {
   @Input() names: Array<any>;
   @Input() code: Array<any>; 
   @Input() title: string;
+  @Input() description: string;
 
   constructor() { }
 
