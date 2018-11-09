@@ -1,0 +1,27 @@
+<div class="titleHolder">
+    <h1 class="pageTitle">{{pageTitle}}</h1>
+</div> 
+
+<div class="filterSearchUploadBox">
+    <div class="fileUpload" (click)='fileInput.click()'>
+        <h2 class="fileUploadText" >Upload a new angular component <i class="far fa-file-alt"></i></h2>
+        <input #fileInput type="file" name="fileInput" id="fileInput" class="fileInput" multiple (change)='uploadFile($event)'>
+    </div>
+
+    <input class="searchComponents" type="text" placeholder="provide keywords and find relevant components">
+
+    <label class="filterLabel" for="filter">Filter by:</label>
+    <select class="filterSearch" name="filter">
+        <option value="recentlyUploaded">Recently uploaded</option>
+        <option value="mostDownloads">Most downloaded</option>
+    </select>
+</div>
+
+<div class="componentsHolder" >
+  <div class="componentHolder" *ngFor="let component of components">
+      <app-single-component [names]='component.names' [code]='component.code' ></app-single-component>
+  </div>
+  
+</div>
+
+
