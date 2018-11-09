@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class UploadNewComponentComponent implements OnInit {
 
   uploadedFiles: Array<any> = [];
+  uploadedCode: Array<any> = [];
   addNewComponentInfo: HTMLElement;
+  componentToAdd: Object = {};
 
   constructor() { }
 
@@ -16,29 +18,34 @@ export class UploadNewComponentComponent implements OnInit {
     this.addNewComponentInfo = document.getElementById('addNewComponentInfo');
   }
 
+  setTitleAndDescription(){
+    this.addNewComponentInfo.style.display = 'block';
+  }
+
   uploadFile(e){
     const files = e.target.files
     
     for(let i = 0; i < files.length; i++){
       const reader = new FileReader();
-
       let file = files[i];
+      this.uploadedFiles.push(file.name);
 
-      this.uploadedFiles.push(file.name)
-
-      console.log(this.uploadedFiles);
-      reader.onload = function(e) {
-        let text = reader.result;
-        console.log(text);
+      reader.onload = (e) => {
+        let code = reader.result;
+        this.uploadedCode.push(code);
       }
       
       reader.readAsText(file);
-
     }
   }
 
-  setTitleAndDescription(){
-    this.addNewComponentInfo.style.display = 'block';
+  submitNewComponent(title, description){
+    this.componentToAdd['names'] = this.uploadedCode;
+    this.componentToAdd['code'] = this.uploadedFiles;
+    this.componentToAdd['title'] = title;
+    this.componentToAdd['description'] = description;
+    console.log(this.componentToAdd);
+
 
   }
 

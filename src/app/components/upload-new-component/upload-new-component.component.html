@@ -6,11 +6,11 @@
 <div class="titleAndDescription" id="addNewComponentInfo">
   <div class="addNewContainer">
       <label for="title" class="addNewLabel">Title: </label>
-      <input type="text" name="title" placeholder="Enter a title for your component">
+      <input #title type="text" name="title" placeholder="Enter a title for your component">
       <br>
     
       <label for="description" class="descriptionLabel addNewLabel" >Description: </label>
-      <textarea name="description" id="componentDescription" cols="30" rows="10" placeholder="Let people know what your component does and how it works with a shot description"></textarea>
+      <textarea #description name="description" id="componentDescription" cols="30" rows="10" placeholder="Let people know what your component does and how it works with a shot description"></textarea>
 
       <div class="uploadedFiles" *ngIf="uploadedFiles">
           <p>Uploaded files: </p>
@@ -20,7 +20,7 @@
       <div class="addNewButtonsHolder">
           <button class="addNewBtn" (click)="fileInput.click()">UPLOAD FILES</button>
     
-          <button class="addNewBtn">SUBMIT</button>
+          <button class="addNewBtn" (click)="submitNewComponent(title.value, description.value)">SUBMIT</button>
       </div>
 
       
