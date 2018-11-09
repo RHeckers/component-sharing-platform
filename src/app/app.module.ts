@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SingleComponentComponent } from './components/single-component/single-component.component';
+import { UploadNewComponentComponent } from './components/upload-new-component/upload-new-component.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SingleComponentComponent } from './components/single-component/single-c
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    SingleComponentComponent
+    SingleComponentComponent,
+    UploadNewComponentComponent
   ],
   imports: [
     BrowserModule,

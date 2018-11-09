@@ -16,10 +16,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.components = [{
+      title: 'Bla bla component',
       names: ["app.component.ts", "app.component.html", "app.component.sccs"],
       code: ["test code text one", "test code test two"]      
     }, 
     {
+      title: 'Advanced form component',
       names: ["app2.component.ts", "app2.component.html"],
       code: ["test2 code text one", "test2 code test two"] 
     }]
@@ -29,19 +31,6 @@ export class HomeComponent implements OnInit {
     
   }
 
-  uploadFile(e){
-    console.log(e.target.files[0]);
-    let files = e.target.files
-    const reader = new FileReader();
-
-    reader.onload = function(e) {
-      let text = reader.result;
-      console.log(text);
-    }
-    
-    reader.readAsText(files[0]);
-    
-    
-  }
+  
 
 }

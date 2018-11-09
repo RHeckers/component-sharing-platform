@@ -1,3 +1,18 @@
 .tabText{
-    margin-top: 10px;
+    padding: 10px;
+}
+
+.tabContainer{
+    border: 2px solid black;
+    padding-bottom: 25px;
+}
+
+.tabContainerTitle{
+    height: 50px;
+    top: 0;
+    left: 0;
+    width: calc(100% - 20px);
+    font-size: 1.2rem;
+    background: rgba(211, 211, 211, 0.61);
+    padding: 30px 0px 0 20px;
 }

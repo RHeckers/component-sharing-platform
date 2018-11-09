@@ -1,0 +1,31 @@
+<div class="fileUpload" (click)='setTitleAndDescription()'>
+    <h2 class="fileUploadText" >Upload a new angular component <i class="far fa-file-alt"></i></h2>
+    <input #fileInput type="file" name="fileInput" id="fileInput" class="fileInput" multiple (change)='uploadFile($event)'>
+</div> 
+
+<div class="titleAndDescription" id="addNewComponentInfo">
+  <div class="addNewContainer">
+      <label for="title" class="addNewLabel">Title: </label>
+      <input type="text" name="title" placeholder="Enter a title for your component">
+      <br>
+    
+      <label for="description" class="descriptionLabel addNewLabel" >Description: </label>
+      <textarea name="description" id="componentDescription" cols="30" rows="10" placeholder="Let people know what your component does and how it works with a shot description"></textarea>
+
+      <div class="uploadedFiles" *ngIf="uploadedFiles">
+          <p>Uploaded files: </p>
+          <p *ngFor="let file of uploadedFiles">{{file}}</p>
+      </div>
+    
+      <div class="addNewButtonsHolder">
+          <button class="addNewBtn" (click)="fileInput.click()">UPLOAD FILES</button>
+    
+          <button class="addNewBtn">SUBMIT</button>
+      </div>
+
+      
+
+  </div>
+  
+  
+</div>

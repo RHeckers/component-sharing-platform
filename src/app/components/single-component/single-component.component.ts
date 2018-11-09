@@ -8,12 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SingleComponentComponent implements OnInit {
 
   @Input() names: Array<any>;
-  @Input() code: Array<any>;
+  @Input() code: Array<any>; 
+  @Input() title: string;
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.code)
     
   }
 
