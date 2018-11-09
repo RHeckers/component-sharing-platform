@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ComponentModel } from '../../models/component';
 
 @Component({
   selector: 'app-upload-new-component',
@@ -10,7 +11,7 @@ export class UploadNewComponentComponent implements OnInit {
   uploadedFiles: Array<any> = [];
   uploadedCode: Array<any> = [];
   addNewComponentInfo: HTMLElement;
-  componentToAdd: Object = {};
+  componentToAdd: Object = {} as ComponentModel;
 
   constructor() { }
 
