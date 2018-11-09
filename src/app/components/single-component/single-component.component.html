@@ -2,7 +2,7 @@
   <h2 class="tabContainerTitle">{{title}}</h2>
   <mat-tab-group>
     <mat-tab *ngFor="let name of names; let i = index" label="{{name}}">
-      <p class="tabText">{{ code[i] }}</p>
+      <pre class="tabText">{{ code[i] }}</pre>
     </mat-tab>
   </mat-tab-group>
 </div>

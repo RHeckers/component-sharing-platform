@@ -59,3 +59,16 @@
     }
 }
 
+.noComponentsHolder{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    font-weight: bold;
+    border: 1px solid #5a68d1;
+    background: #5a68d150;
+    margin: 15px;
+    margin-left: 30%;
+}

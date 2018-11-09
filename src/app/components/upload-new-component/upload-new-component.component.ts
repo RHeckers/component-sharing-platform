@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComponentModel } from '../../models/component';
+import { ComponentsService } from 'src/app/services/components.service';
 
 @Component({
   selector: 'app-upload-new-component',
@@ -13,7 +14,7 @@ export class UploadNewComponentComponent implements OnInit {
   addNewComponentInfo: HTMLElement;
   componentToAdd: Object = {} as ComponentModel;
 
-  constructor() { }
+  constructor( private componentServie: ComponentsService) { }
 
   ngOnInit() {
     this.addNewComponentInfo = document.getElementById('addNewComponentInfo');
@@ -33,6 +34,7 @@ export class UploadNewComponentComponent implements OnInit {
 
       reader.onload = (e) => {
         let code = reader.result;
+        console.log(code);
         this.uploadedCode.push(code);
       }
       
@@ -41,13 +43,15 @@ export class UploadNewComponentComponent implements OnInit {
   }
 
   submitNewComponent(title, description){
-    this.componentToAdd['names'] = this.uploadedCode;
-    this.componentToAdd['code'] = this.uploadedFiles;
+    console.log(this.uploadedCode);
+    this.componentToAdd['names'] = this.uploadedFiles;
+    this.componentToAdd['code'] = this.uploadedCode;
     this.componentToAdd['title'] = title;
     this.componentToAdd['description'] = description;
-    console.log(this.componentToAdd);
 
-
+    //Send the newly created componented obj to the service, so It can be saved in the backend
+    this.componentServie.addComponent(this.componentToAdd as ComponentModel)
+    this.addNewComponentInfo.style.display = 'none';
   }
 
 }
