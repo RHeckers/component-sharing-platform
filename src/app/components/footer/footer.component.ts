@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  footer: HTMLElement;
+
   constructor() { }
 
   ngOnInit() {
+
+    this.footer = document.getElementById('footer');
+
   }
 
 }
