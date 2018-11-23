@@ -40,8 +40,11 @@ export class SingleComponentComponent implements OnInit, AfterContentInit {
   //Sort the files, so the TS files show first and the css files show last
   sortFilesInput(){
       let tsArr = []
+      let tsArrCode = []
       let htmlArr = []
+      let htmlArrCode = []
       let cssArr = []
+      let cssArrCode = []
       for(let i = 0; i < this.fileNames.length; i++){
         let name = this.fileNames[i]; 
         let number = this.fileNames.length / 2;
@@ -49,16 +52,20 @@ export class SingleComponentComponent implements OnInit, AfterContentInit {
         
         if(name.includes('.ts')){
           tsArr.push(name);
+          tsArrCode.push(this.code[i]);
         }        
         if(name.includes('.html')){
           htmlArr.push(name)
+          htmlArrCode.push(this.code[i]);
         }        
         if(name.includes('.css') || name.includes('.scss') || name.includes('.sass') || name.includes('.less')){
            cssArr.push(name);
+           cssArrCode.push(this.code[i]);
         }
 
         if(i == this.fileNames.length - 1){
           this.names = [...tsArr, ...htmlArr, ...cssArr];
+          this.code = [...tsArrCode, ...htmlArrCode, ...cssArrCode];
         }
       }  
 
