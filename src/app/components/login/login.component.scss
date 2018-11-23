@@ -1,0 +1,115 @@
+input{
+    width: 30%;
+}
+
+.submitBtn{
+    margin-top: 30px;
+    width: 20%;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 40%;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,.12);
+    background: rgba(255, 40, 40, 0.664);
+    cursor: pointer;
+}
+
+.submitBtn:hover{
+    background: rgb(255, 40, 40);
+}
+
+.loginFormBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .loginFormWrapper{
+        padding: 30px;
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        border: 1px solid rgba(0,0,0,.12);
+    }
+
+    .loginSignUpTab{
+        width: 90%;
+
+        h2{
+            font-size: 25px;
+        }
+    }
+
+    .firstInput{
+        margin-top: 15px;
+    }
+
+    input{
+        padding: 10px;
+        display: block;
+        width: 90%;
+        height: 35px;
+        margin-top: 5px;
+        font-size: 20px;
+        border-radius: 5px;
+        margin-bottom: 25px;
+        border: 1px solid rgba(0,0,0,.12);
+        background: rgba(0,0,0,.12);
+    }
+
+    input:hover{
+        background: white;
+    }
+    
+    input:focus{
+        outline: none;
+        background: white;
+    }
+
+    .inputHolder{
+        width: 50%;
+        padding-top: 50px;
+        display: inline-block;
+    }
+
+    .socialHolder{
+        width: 50%;
+        padding-top: 50px;
+        display: inline-block;
+
+        .socialTitle{
+            margin-left: 20px;
+        }
+
+        .socialLoginBtn{
+            display: block;
+            margin: 20px;
+            padding: 5px;
+            width: 90%;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            height: 30px;
+        }
+
+        .socialLoginBtn:hover{
+            transform: scale(1.05);
+        }
+        
+        .fab{
+            color: white;
+        }
+
+        .blue{
+            background: #3b5998;
+        }
+        .red{
+            background: rgb(223, 75, 55);
+        }
+        .darkgray{
+            background: darkgray;
+        }
+
+    }
+}

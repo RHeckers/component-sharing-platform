@@ -1,0 +1,42 @@
+<div class="loginFormBox" id="loginFormBox">
+  <div class="loginFormWrapper">
+    <mat-tab-group class="loginSignUpTab">
+      <mat-tab class="loginTab" label="LOGIN">
+        <div class="inputHolder">
+          <h2>Manual login</h2>
+          <p class="firstInput">EMAIL:</p> <input #emailInput type="email" />
+
+          <p>PASSWORD:</p> <input #passwordInput type="password" />
+        </div>
+
+        <div class="socialHolder">
+          <h2 class="socialTitle">Social login</h2>
+          <button class="socialLoginBtn blue"><i class="fab fa-facebook-f fa-lg"></i></button>
+          <button class="socialLoginBtn red"><i class="fab fa-google fa-lg"></i></button>
+          <button class="socialLoginBtn darkgray"><i class="fab fa-github fa-lg"></i></button>
+            
+        </div>
+
+        <button class="submitBtn" (click)="submitLogin(emailInput, passwordInput)">SUBMIT</button>
+      </mat-tab>
+
+      <mat-tab class="signupTab" label="SIGN-UP">
+          <div class="inputHolder">
+              <h2>Manual sign-up</h2>
+              <p class="firstInput">EMAIL:</p> <input #emailSignup type="email" />
+    
+              <p>PASSWORD:</p> <input #passwordSignup type="password" />
+            </div>
+    
+            <div class="socialHolder">
+              <h2 class="socialTitle">Social sign-up</h2>
+              <button class="socialLoginBtn blue"><i class="fab fa-facebook-f fa-lg"></i></button>
+              <button class="socialLoginBtn red"><i class="fab fa-google fa-lg"></i></button>
+              <button class="socialLoginBtn darkgray"><i class="fab fa-github fa-lg"></i></button>
+            </div>
+
+            <button class="submitBtn" (click)="submitRegister(emailSignup, passwordSignup)">SUBMIT</button>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

@@ -1,51 +1,11 @@
 .titleHolder{
-    width: 100%;
+    width: 85%;
+    margin-left: 7.5%;
     display: flex;
     justify-content: center;
 
     .pageTitle{
         font-size: 1.5rem;
-
-    }
-}
-
-.filterSearchUploadBox{
-    width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-
-    .fileUpload:hover{
-        transform: scale(1.05);
-        color: rgb(76, 96, 175);
-        border: 2px solid rgb(76, 96, 175);
-        background: white;
-    }
-
-    .searchComponents{
-        display: inline-block;
-        height: 35px;
-        border-radius: 15px;
-        outline: none; 
-        width: 30%;
-        margin: 0 2% 0 12%;
-        border: 2px solid #5a68d1;
-        font-size: 18px;
-        padding-left: 5px;
-    }
-
-    .filterLabel{
-        margin-left: 3%;
-    }
-    .filterSearch{
-        display: inline-block;
-        height: 35px;
-        outline: none; 
-        width: 20%;
-        margin-left: 15px;
-        border: 2px solid #5a68d1;
-        font-size: 18px;
-        padding-left: 5px;
 
     }
 }

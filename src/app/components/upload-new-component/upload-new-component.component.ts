@@ -13,10 +13,13 @@ export class UploadNewComponentComponent implements OnInit {
   uploadedCode: Array<any> = [];
   addNewComponentInfo: HTMLElement;
   componentToAdd: Object = {} as ComponentModel;
+  fileUpload: HTMLElement;
 
   constructor( private componentServie: ComponentsService) { }
-
+ 
   ngOnInit() {
+    this.fileUpload = document.getElementById('fileUpload');
+    this.fileUpload.style.width = window.innerWidth * 0.8 * 0.3 + 'px'
     this.addNewComponentInfo = document.getElementById('addNewComponentInfo');
   }
 
@@ -37,7 +40,6 @@ export class UploadNewComponentComponent implements OnInit {
 
       reader.onload = (e) => {
         let code = reader.result;
-        console.log(code);
         this.uploadedCode.push(code);
       }
       
@@ -46,10 +48,10 @@ export class UploadNewComponentComponent implements OnInit {
   }
 
   submitNewComponent(title, description){
-    console.log(this.uploadedCode);
     this.componentToAdd['names'] = this.uploadedFiles;
     this.componentToAdd['code'] = this.uploadedCode;
     this.componentToAdd['title'] = title.value;
+    this.componentToAdd['favorite'] = [];
     this.componentToAdd['description'] = description.value;
 
     //Send the newly created componented obj to the service, so It can be saved in the backend

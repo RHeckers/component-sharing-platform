@@ -1,15 +1,11 @@
 .fileUpload{
-    display: inline-block;
-    position: relative;
     min-width: 420px;
-    width: 27%;
-    margin: 25px 3% 25px 30%;
-    background: rgb(76, 96, 175);
+    background: #8397B7;
     border-radius: 15px;
     height: 40px;
     text-align: center;
     color: white;
-    cursor: pointer;
+    cursor: pointer;  
 
     .fileUploadText{
         text-transform: uppercase;
@@ -22,6 +18,13 @@
 
     }
     
+}
+
+.fileUpload:hover{
+    transform: scale(1.05);
+    color: rgb(76, 96, 175);
+    border: 2px solid rgb(76, 96, 175);
+    background: white;
 }
 
 .fileInput{
@@ -49,7 +52,7 @@
     display: flex;
     flex-direction: column;
     width: 70%;
-    margin: 250px 15%;
+    margin: 50px 15%;
     background: rgba(0, 0, 0, 0.637);
     padding: 50px;
 

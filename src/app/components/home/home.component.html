@@ -1,32 +1,13 @@
-<div class="titleHolder">
-    <h1 class="pageTitle">{{pageTitle}}</h1>
-</div> 
 
-<div class="filterSearchUploadBox">
+<app-main-controlles></app-main-controlles>
 
-    <app-upload-new-component></app-upload-new-component>
-
-    <input class="searchComponents" type="text" placeholder="provide keywords and find relevant components">
-
-    <label class="filterLabel" for="filter">Filter by:</label>
-    <select class="filterSearch" name="filter">
-        <option value="recentlyUploaded">Recently uploaded</option>
-        <option value="mostDownloads">Most downloaded</option>
-    </select>
-</div>
- 
-<div class="componentsHolder" *ngIf="components" >
+<div class="componentsHolder" *ngIf="components">
   <div class="componentHolder" *ngFor="let component of components">
-      <app-single-component [description]='component.description' [title]='component.title' [names]='component.names' [code]='component.code' ></app-single-component>
+    <app-single-component [component]="component"> </app-single-component>
   </div>
-   
 </div>
-<div class="noComponentsHolder" *ngIf="components.length == 0" >
-  <h1>NO COMPONENTS HAVE BIN ADDED.</h1><br>
-  <h1>BE THE FIRST THE ADD ONE!</h1>
-   
+<div class="noComponentsHolder" *ngIf="components.length == 0">
+  <h1>NO COMPONENTS HAVE BEEN ADDED.</h1>
+  <br />
+  <h1>BE THE FIRST TO ADD ONE!</h1>
 </div>
-
-
-
-

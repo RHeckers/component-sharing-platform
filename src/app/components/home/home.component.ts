@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
+    this.componentServie.getComponents();
     this.pageTitle = 'Explore, upload and download Angular Components'
     this.fileInput = document.getElementById('fileInput');
     

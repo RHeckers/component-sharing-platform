@@ -1,10 +1,21 @@
 <div class="tabContainer">
-  <h2 class="tabContainerTitle">{{title}}</h2>
+  <div class="component-card-header"> 
+    <h2 class="tabContainerTitle">{{title}}</h2>
+
+    <div class="icon-holder"> 
+        <i *ngIf="!component.favorite.includes('test')" class="far fa-star fa-lg"></i>
+        <i *ngIf="component.favorite.includes('test')" class="fas fa-star fa-lg"></i>
+        <i class="far fa-copy fa-lg" (click)="copyContent($event)"></i>
+    </div>
+    
+  </div>
   <mat-tab-group>
     <mat-tab *ngFor="let name of names; let i = index" label="{{name}}">
-      <pre class="tabText">{{ code[i] }}</pre>
+      <textarea readonly class="tabText">{{ code[i] }}</textarea>
     </mat-tab>
     <mat-tab label="Description" class="tabText"> <pre class="tabText">{{description}}</pre></mat-tab>
+
   </mat-tab-group>
+
 </div>
-  
+ 
