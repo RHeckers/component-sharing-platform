@@ -1,0 +1,13 @@
+.sideMenu {
+  position: fixed;
+  width: 12.5%;
+  max-height: calc(98vh - 300px);
+  height: auto;
+  border: 0.1px solid black;
+  display: inline-block;
+  bottom: 120px;
+  top: 205px;
+  background: #A2BACA;
+  display: flex;
+  flex-direction: column;
+}

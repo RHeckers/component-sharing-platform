@@ -1,0 +1,24 @@
+.accordeonContainer{
+    width: 100%;
+
+    .accordeonTitle{
+        padding: 10px 15px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: 500;
+        font-size: 19px;
+
+        .right{
+            float: right;
+            cursor: pointer;
+        }
+
+
+    }
+    .accordeonItem{
+        padding: 5px 15px 5px 25px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: 100;
+        font-size: 17px;
+
+    }
+}

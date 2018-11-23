@@ -15,6 +15,8 @@ import { SingleComponentComponent } from './components/single-component/single-c
 import { UploadNewComponentComponent } from './components/upload-new-component/upload-new-component.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainControllesComponent } from './components/main-controlles/main-controlles.component';
+import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
+import { AccordeonComponent } from './components/accordeon/accordeon.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { MainControllesComponent } from './components/main-controlles/main-contr
     SingleComponentComponent,
     UploadNewComponentComponent,
     LoginComponent,
-    MainControllesComponent
+    MainControllesComponent,
+    SidemenuComponent,
+    AccordeonComponent
   ],
   imports: [
     BrowserModule,
