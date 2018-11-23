@@ -1,3 +1,7 @@
 <div class="sideMenu" id="sideMenu">
-    <app-accordeon *ngFor="let category of categories" []="categories"></app-accordeon>
-</div>   
+    <app-accordeon 
+        *ngFor="let category of categories; let i = index" 
+        [accordeonTitle]="categories[i].category" 
+        [index]="categories[i].index" 
+        [accordeonItem]="categories[i].subCategories"></app-accordeon>
+</div>     

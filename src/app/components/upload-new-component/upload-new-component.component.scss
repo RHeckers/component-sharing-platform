@@ -1,10 +1,10 @@
 .fileUpload{
     min-width: 420px;
-    background: #8397B7;
+    background: rgb(246, 246, 250);
     border-radius: 15px;
     height: 40px;
     text-align: center;
-    color: white;
+    color: black;
     cursor: pointer;  
 
     .fileUploadText{
@@ -21,10 +21,8 @@
 }
 
 .fileUpload:hover{
-    transform: scale(1.05);
-    color: rgb(76, 96, 175);
-    border: 2px solid rgb(76, 96, 175);
-    background: white;
+    color: white;
+    background: black;
 }
 
 .fileInput{
