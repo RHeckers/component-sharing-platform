@@ -6,7 +6,7 @@ There is still a long way to go, but the uploading, copying, diplaying and so on
 ## MEAN Stack
 I use Node.js and express for a serverside language, Angular for the front end framework and mongoDb for the database.
 
-##Clone instructions
+## Clone instructions
 Run git clone 
 
 Setup your own config file with your mongoURI to connect to your own database.
