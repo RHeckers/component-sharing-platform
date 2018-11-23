@@ -8,7 +8,9 @@ const componentCollectionRoutes = require('./routes/components');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://robertoheckers:QaWsEdRfTg@cluster0-artxq.mongodb.net/test?retryWrites=true', { useNewUrlParser: true })
+const db = require('../configs/keys_dev').mongoURI;
+
+mongoose.connect(db, { useNewUrlParser: true })
  .then(() => {
      console.log('Connected to database!')
  })
