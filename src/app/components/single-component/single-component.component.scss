@@ -1,11 +1,15 @@
 .tabText{
     padding: 10px;
     height: 250px;
-    overflow: auto;
+    min-width: 100%;
+    max-width: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
     border: none;
 }
 
 .tabContainer{
+    margin-left: 5%;
     border: 2px solid black;
 }
 
@@ -13,7 +17,7 @@
     height: 50px;
     top: 0;
     left: 0;
-    background: rgba(211, 211, 211, 0.61);
+    background: #A2BACA;
     display: flex;
     flex-direction: row;
     align-items: center;

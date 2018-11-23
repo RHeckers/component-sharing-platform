@@ -11,11 +11,27 @@
 }
 
 .componentsHolder{
-    width: 80%;
-    margin-left: 10%;
+    width: 98%;
+    margin: 1%;
+    position: relative;
+
+    .componentContainer{
+        display: inline-block;
+        width: 80%;
+        margin-left: 18.5%;
+    }
+
+    .sideMenu{
+        position: fixed;
+        width: 20%;
+        height: calc(98vh - 320px);
+        border: 1px solid black;
+        display: inline-block;
+        bottom: 120px;
+    }
 
     .componentHolder{
-        margin-bottom: 30px;
+        margin-bottom: 30px;  
     }
 }
 
