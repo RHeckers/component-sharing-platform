@@ -8,7 +8,7 @@ const componentCollectionRoutes = require('./routes/components');
 
 const app = express();
 
-const db = require('../configs/keys_dev').mongoURI;
+const db = require('../config/key_dev').mongoURI;
 
 mongoose.connect(db, { useNewUrlParser: true })
  .then(() => {
