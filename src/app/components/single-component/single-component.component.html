@@ -10,7 +10,7 @@
           name="stackBlitz" 
           class="stackBlitzImg" 
           data-url="component.gitRepo"
-          (click)='openInStackblitz(component.gitRepo, testTab)'
+          (click)='openInStackblitz(component.gitRepo)'
            alt="">
  
         <i *ngIf="!component.favorite.includes('test')" class="far fa-star fa-lg"></i>
@@ -27,7 +27,6 @@
       
     </mat-tab>
     <mat-tab label="Description" class="tabText"> <pre class="tabText">{{description}}</pre></mat-tab>
-    <mat-tab #testTab label="Description" class="tabText"> <div #testTab></div> </mat-tab>
   </mat-tab-group>
 </div>
  

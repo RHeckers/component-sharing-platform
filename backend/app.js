@@ -4,7 +4,9 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const mongoose = require('mongoose');
 
+
 const componentCollectionRoutes = require('./routes/components');
+const authRoutes = require('./routes/auth');
 
 const app = express();
 
@@ -33,5 +35,6 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 app.use('/api/components', componentCollectionRoutes);
+app.use('/api/auth', authRoutes);
 
 module.exports = app;

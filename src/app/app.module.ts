@@ -17,6 +17,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MainControllesComponent } from './components/main-controlles/main-controlles.component';
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 import { AccordeonComponent } from './components/accordeon/accordeon.component';
+import { AuthInterceptorService } from './services/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { AccordeonComponent } from './components/accordeon/accordeon.component';
     MaterialModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

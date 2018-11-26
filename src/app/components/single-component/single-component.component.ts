@@ -42,13 +42,13 @@ export class SingleComponentComponent implements OnInit, AfterContentInit {
     this.changeMaterialTabStyling();
   }
 
-  openInStackblitz(stackblitzURL, htmlElm){
+  openInStackblitz(stackblitzURL){
     let stackBlitzGitURL = stackblitzURL.split('github.com/')[1];
     sdk.openGithubProject(stackBlitzGitURL);
 
     //Code to embed the project with StackBlitz
     // sdk.embedGithubProject(
-    //   'previewDiv',
+    //   'Elm or div id',
     //   stackBlitzGitURL,
     //   { height: 500, view: 'preview' }
     // );

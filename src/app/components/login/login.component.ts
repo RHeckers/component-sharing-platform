@@ -1,7 +1,7 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { ErrorSuccessMsgService } from 'src/app/services/error-success-msg.service';
-
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   loginFormBox: HTMLElement;
 
-  constructor(private errorSuccessMsg: ErrorSuccessMsgService) { }
+  constructor(private errorSuccessMsg: ErrorSuccessMsgService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.loginFormBox = document.getElementById('loginFormBox');
@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   }
 
   private submitLogin(email, password){
-
     if(!email.value || email.value == "" || email.value == null || email.value == undefined){
       this.errorSuccessMsg.insertMsgBefore("Email field is required", email, 5000, "error", "errorMsg");
       return;
@@ -40,17 +39,14 @@ export class LoginComponent implements OnInit {
     //Open loader here
 
     //Place code to signin below
-    // this.authService.login(email, password).subscribe(response => {
-    //   if(response) {
-    //     //Close loader here
-
-    //     console.log(response);
-
-    //   };
-
-    // });
-    
-      
+    this.authService.login(email, password).subscribe(response => {
+      if(response.token) {
+        const token = response.token;
+        this.authService.setToken(token)
+        this.saveAuthData(token);
+        this.router.navigate(['/']);
+      };
+    });
   }
 
   private submitRegister(email, password){
@@ -72,12 +68,9 @@ export class LoginComponent implements OnInit {
     //Open loader here
 
     //Place code to signup below
-    // this.authService.createUser(email, password).subscribe(res =>{
-    //   console.log(res)
-
-    //   //Close loader here
-    // });;
-
+    this.authService.createUser(email, password).subscribe(res =>{
+      console.log(res)
+    });
   }
 
   private saveAuthData(token: string){
