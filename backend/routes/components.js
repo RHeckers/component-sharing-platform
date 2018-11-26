@@ -5,20 +5,22 @@ const Component = require('../models/component');
 // const checkAuth = require('../middleware/check-auth');
 
 router.post('/add',(req, res, next) => {
+    console.log("Git REPO: =>  ",req.body.gitRepo);
     const component = new Component({
         title: req.body.title,
         description: req.body.description,
         names: req.body.names,
         favorite: req.body.favorite,
+        gitRepo: req.body.gitRepo,
         code: req.body.code
     });
-    // console.log(component);
+    console.log(component.gitRepo);
     component.save().then(createdComponent => {
-        console.log("Created component = ", createdComponent)
         res.status(201).json({
             createdComponent,
             id: createdComponent._id
         });
+        console.log(createdComponent.gitRepo)
     })
     .catch(err => console.log(err));
 

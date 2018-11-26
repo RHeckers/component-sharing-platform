@@ -3,19 +3,31 @@
     <h2 class="tabContainerTitle">{{title}}</h2>
 
     <div class="icon-holder"> 
+        <!-- <label *ngIf="component.gitRepo" for="stackBlitz">Preview:  </label> -->
+        <img 
+          *ngIf="component.gitRepo" 
+          src="http://cdn.embed.ly/providers/logos/stackblitz.png" 
+          name="stackBlitz" 
+          class="stackBlitzImg" 
+          data-url="component.gitRepo"
+          (click)='openInStackblitz(component.gitRepo, testTab)'
+           alt="">
+ 
         <i *ngIf="!component.favorite.includes('test')" class="far fa-star fa-lg"></i>
         <i *ngIf="component.favorite.includes('test')" class="fas fa-star fa-lg"></i>
         <i class="far fa-copy fa-lg" (click)="copyContent($event)"></i>
+        <a [href]="component.gitRepo" target="_blank"><i *ngIf="component.gitRepo"  class="fab fa-github fa-lg"></i></a> 
     </div>
-    
+     
   </div>
   <mat-tab-group>
     <mat-tab *ngFor="let name of names; let i = index" label="{{name}}">
       <textarea readonly class="tabText">{{ code[i] }}</textarea>
+
+      
     </mat-tab>
     <mat-tab label="Description" class="tabText"> <pre class="tabText">{{description}}</pre></mat-tab>
-
+    <mat-tab #testTab label="Description" class="tabText"> <div #testTab></div> </mat-tab>
   </mat-tab-group>
-
 </div>
  

@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
 
   constructor(private componentServie: ComponentsService) { 
     this.componentServie.updatedCollections.subscribe(val => this.components = [...val])
-    console.log(this.components.length)
   }
 
   ngOnInit() {

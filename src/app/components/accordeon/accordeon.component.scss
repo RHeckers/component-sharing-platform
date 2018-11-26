@@ -1,7 +1,9 @@
 .accordeonContainer{
     width: 100%;
+    background:rgba(0,0,0,.03);
 
     .accordeonTitle{
+        border-bottom: 1px solid rgba(0,0,0,.13);
         padding: 10px 15px;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-weight: 500;
@@ -17,6 +19,7 @@
     .subCategories{
         display: block;
         overflow: hidden;
+        padding: 10px 0;
 
         .accordeonItem{
             padding: 5px 15px 5px 25px;

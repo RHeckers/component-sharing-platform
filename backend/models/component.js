@@ -19,6 +19,9 @@ const componentSchema = mongoose.Schema({
     },
     favorite: {
         type: Array
+    },
+    gitRepo: {
+        type: String
     }
 });
 

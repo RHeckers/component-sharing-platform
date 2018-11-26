@@ -22,7 +22,7 @@ export class AccordeonComponent implements OnInit {
   }
 
   showSubCategories(e){
-    const height = this.accordeonItem.length * 25;
+    const height = this.accordeonItem.length * 25 + 30;
     const tweenSpeed = this.accordeonItem.length * 0.15;
     const clickedArrowId = e.target['attributes']['id']['value'];
     const length = clickedArrowId.length;
@@ -35,16 +35,15 @@ export class AccordeonComponent implements OnInit {
 
     if(displaySetting == 'block'){
       TweenMax.to(arrow, 0.45, {transform: 'rotate(180deg)'});
-      TweenMax.to(subCategoriesToShow, tweenSpeed, {height: '0px', onComplete: function(){
+      TweenMax.to(subCategoriesToShow, tweenSpeed, {height: '0px', padding: '0', onComplete: function(){
         subCategoriesToShow.style.display = 'none';
       }});
     }else{
       subCategoriesToShow.style.display = 'block';
       TweenMax.to(arrow, 0.45, {transform: 'rotate(0deg)'});      
-      TweenMax.to(subCategoriesToShow, tweenSpeed, {height: height});
+      TweenMax.to(subCategoriesToShow, tweenSpeed, {height: height, padding: '10px 0'});
 
     }
-    
   }
  
 }

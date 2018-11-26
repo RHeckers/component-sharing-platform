@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ComponentModel } from '../../models/component';
 import { ComponentsService } from 'src/app/services/components.service';
+import sdk from '@stackblitz/sdk';
 
 @Component({
   selector: 'app-upload-new-component',
@@ -14,6 +15,7 @@ export class UploadNewComponentComponent implements OnInit {
   addNewComponentInfo: HTMLElement;
   componentToAdd: Object = {} as ComponentModel;
   fileUpload: HTMLElement;
+  stackBlitzPayload: any;
 
   constructor( private componentServie: ComponentsService) { }
  
@@ -46,20 +48,28 @@ export class UploadNewComponentComponent implements OnInit {
       reader.readAsText(file);
     }
   }
+ 
 
-  submitNewComponent(title, description){
+
+  submitNewComponent(title, description, gitRepo){
     this.componentToAdd['names'] = this.uploadedFiles;
     this.componentToAdd['code'] = this.uploadedCode;
     this.componentToAdd['title'] = title.value;
     this.componentToAdd['favorite'] = [];
     this.componentToAdd['description'] = description.value;
+    this.componentToAdd['gitRepo'] = gitRepo.value;
 
-    //Send the newly created componented obj to the service, so It can be saved in the backend
+    console.log(this.componentToAdd['gitRepo'])
+
+    // Send the newly created componented obj to the service, so It can be saved in the backend
     this.componentServie.addComponent(this.componentToAdd as ComponentModel)
     this.addNewComponentInfo.style.display = 'none';
     title.value = '';
     description.value = '';
   }
+
+  
+  
 
 }
  

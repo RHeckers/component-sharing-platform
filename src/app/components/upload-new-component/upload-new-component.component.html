@@ -7,6 +7,10 @@
       <label for="title" class="addNewLabel">Title: </label>
       <input #title type="text" name="title" placeholder="Enter a title for your component">
       <br>
+
+      <label for="gitRepo" class="addNewLabel">Github repo URL: </label>
+      <input #gitRepo type="text" name="title" placeholder="Enter a github repo url">
+      <br>
     
       <label for="description" class="descriptionLabel addNewLabel" >Description: </label>
       <textarea #description name="description" id="componentDescription" cols="30" rows="10" placeholder="Let people know what your component does and how it works with a shot description"></textarea>
@@ -20,7 +24,7 @@
           <button class="addNewBtn" (click)="fileInput.click()">UPLOAD FILES</button>
           <input #fileInput type="file" name="fileInput" id="fileInput" class="fileInput" multiple (change)='uploadFile($event)'>
     
-          <button class="addNewBtn" (click)="submitNewComponent(title, description)">SUBMIT</button>
+          <button class="addNewBtn" (click)="submitNewComponent(title, description, gitRepo)">SUBMIT</button>
       </div>
 
       

@@ -4,5 +4,6 @@ export interface ComponentModel{
     names: Array<string>,
     code: Array<string>,
     favorite?: Array<string>,
+    gitRepo?: string, 
     id: string
 }

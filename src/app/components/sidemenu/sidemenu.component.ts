@@ -33,7 +33,7 @@ export class SidemenuComponent implements OnInit {
     },
     {
       index: "3",
-      category: "Buttons & Indicator components", 
+      category: "Indicator components", 
       subCategories: ['test', 'test', 'test']
     },
     {

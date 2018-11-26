@@ -27,6 +27,7 @@ export class ComponentsService {
             names: component.names,
             code: component.code,
             favorite: component.favorite,
+            gitRepo: component.gitRepo,
             id: component._id
           };
         });
@@ -46,8 +47,9 @@ export class ComponentsService {
     // Make the post request
     this.http.post<any>('http://localhost:3000/api/components/add', component)
     .subscribe((res) => {
+      console.log(res)
       // Add the component to the uploaded components
-      const newComponent: ComponentModel = {title: res.createdComponent.title, description: res.createdComponent.description, names: res.createdComponent.names, code: res.createdComponent.code, favorite: [], id: res.id}
+      const newComponent: ComponentModel = {title: res.createdComponent.title, description: res.createdComponent.description, names: res.createdComponent.names, code: res.createdComponent.code, favorite: [], gitRepo: res.createdComponent.gitRepo, id: res.id}
 
       this.allComponents.unshift(newComponent);
       this.updatedCollections.next([...this.allComponents]);

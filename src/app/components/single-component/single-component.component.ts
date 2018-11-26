@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, AfterContentInit } from '@angular/core';
+import sdk from '@stackblitz/sdk';
 
 @Component({
   selector: 'app-single-component',
@@ -8,6 +9,7 @@ import { Component, OnInit, Input, AfterContentInit } from '@angular/core';
 export class SingleComponentComponent implements OnInit, AfterContentInit {
 
   fileNames: Array<any>;
+  gitRepo: string;
   names: Array<any>;
   code: Array<any>; 
   tabscards: NodeList
@@ -25,6 +27,9 @@ export class SingleComponentComponent implements OnInit, AfterContentInit {
     this.code = this.component.code;
     this.title = this.component.title;
     this.description = this.component.description;
+    this.gitRepo = this.component.gitRepo;
+
+    console.log('single comp: =>', this.gitRepo)
 
     //Sort the files, so the TS files show first and the css files show last
     this.sortFilesInput();    
@@ -35,6 +40,19 @@ export class SingleComponentComponent implements OnInit, AfterContentInit {
     //Function to change the material tab styling, so no scroll bar shows. 
     //Could not find no other way >>>, /deep/, ::ng-depp are deprecated and no replacement.
     this.changeMaterialTabStyling();
+  }
+
+  openInStackblitz(stackblitzURL, htmlElm){
+    let stackBlitzGitURL = stackblitzURL.split('github.com/')[1];
+    sdk.openGithubProject(stackBlitzGitURL);
+
+    //Code to embed the project with StackBlitz
+    // sdk.embedGithubProject(
+    //   'previewDiv',
+    //   stackBlitzGitURL,
+    //   { height: 500, view: 'preview' }
+    // );
+
   }
 
   //Sort the files, so the TS files show first and the css files show last

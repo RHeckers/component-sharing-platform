@@ -8,6 +8,15 @@
     border: none;
 }
 
+.stackBlitzImg{
+    height: 34px;
+    margin: 0 20px 0 3px;
+    margin-top: -11px;
+    padding-top: 5px;
+    cursor: pointer;
+
+}
+
 .tabContainer{
     margin-left: 5%;
     border: 2px solid rgba(0,0,0,.03);
@@ -39,7 +48,15 @@
     margin-right: 20px;
 }
 
+a .fab{
+    color: black;
+}
+
 .far:hover{
+    transform: scale(1.25);
+    cursor: pointer;
+}
+.fab:hover{
     transform: scale(1.25);
     cursor: pointer;
 }
