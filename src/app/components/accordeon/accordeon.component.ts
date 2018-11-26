@@ -22,28 +22,29 @@ export class AccordeonComponent implements OnInit {
   }
 
   showSubCategories(e){
-    let subs = document.querySelectorAll('.subCategories');
-    let height = this.accordeonItem.length * 25;
-    let tweenSpeed = this.accordeonItem.length * 0.25;
-    let arrow;
-
-    for(let i = 0; i < subs.length; i++){
-      let sub = subs[i] as HTMLElement;
-      arrow = document.getElementById('arrow' + i)
-      TweenMax.to(arrow, 0, {transform: 'rotate(0deg)'});
-      sub.style.display = 'none';
-      sub.style.height = '0';
-    }
-
+    const height = this.accordeonItem.length * 25;
+    const tweenSpeed = this.accordeonItem.length * 0.15;
     const clickedArrowId = e.target['attributes']['id']['value'];
     const length = clickedArrowId.length;
     const index = clickedArrowId.charAt(length - 1);
     this.activeSubCategoryIndex = index;
-    arrow = document.getElementById('arrow' + index)
-    TweenMax.to(arrow, 0.5, {transform: 'rotate(180deg)'});
+
+    const arrow = document.getElementById('arrow' + index)
     const subCategoriesToShow = document.getElementById('subCategories' + index);
-    subCategoriesToShow.style.display = 'block';
-    TweenMax.to(subCategoriesToShow, tweenSpeed, {height: height + 'px'})
+    const displaySetting = getComputedStyle(subCategoriesToShow, null).display;
+
+    if(displaySetting == 'block'){
+      TweenMax.to(arrow, 0.45, {transform: 'rotate(180deg)'});
+      TweenMax.to(subCategoriesToShow, tweenSpeed, {height: '0px', onComplete: function(){
+        subCategoriesToShow.style.display = 'none';
+      }});
+    }else{
+      subCategoriesToShow.style.display = 'block';
+      TweenMax.to(arrow, 0.45, {transform: 'rotate(0deg)'});      
+      TweenMax.to(subCategoriesToShow, tweenSpeed, {height: height});
+
+    }
+    
   }
  
 }
