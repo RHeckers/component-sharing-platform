@@ -2,9 +2,9 @@ const express = require('express');
 const multer = require('multer');
 const router = express.Router();
 const Component = require('../models/component');
-// const checkAuth = require('../middleware/check-auth');
+const checkAuth = require('../middleware/check-auth');
 
-router.post('/add',(req, res, next) => {
+router.post('/add', checkAuth, (req, res, next) => {
     console.log("Git REPO: =>  ",req.body.gitRepo);
     const component = new Component({
         title: req.body.title,

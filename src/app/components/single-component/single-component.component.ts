@@ -45,14 +45,12 @@ export class SingleComponentComponent implements OnInit, AfterContentInit {
   openInStackblitz(stackblitzURL){
     let stackBlitzGitURL = stackblitzURL.split('github.com/')[1];
     sdk.openGithubProject(stackBlitzGitURL);
-
     //Code to embed the project with StackBlitz
     // sdk.embedGithubProject(
     //   'Elm or div id',
     //   stackBlitzGitURL,
     //   { height: 500, view: 'preview' }
     // );
-
   }
 
   //Sort the files, so the TS files show first and the css files show last
