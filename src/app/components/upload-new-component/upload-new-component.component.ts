@@ -17,7 +17,7 @@ export class UploadNewComponentComponent implements OnInit, OnDestroy {
   userIsAuthenticated: boolean = false;
   uploadedFiles: Array<any> = [];
   uploadedCode: Array<any> = [];
-  addNewComponentInfo: HTMLElement;
+  addNewComponentInfo: HTMLElement; 
   componentToAdd: Object = {} as ComponentModel;
   fileUpload: HTMLElement;
   autenticated: boolean = false; 
@@ -29,11 +29,8 @@ export class UploadNewComponentComponent implements OnInit, OnDestroy {
     this.addNewComponentInfo = document.getElementById('addNewComponentInfo');
 
     this.authListenerSubscription = this.authService.getAuthStatusListener().subscribe(isAuth => {
-      console.log(123)
       this.userIsAuthenticated = isAuth;
-      console.log(this.userIsAuthenticated);
     });
-    console.log(this.userIsAuthenticated);
   }
 
   ngOnDestroy(){

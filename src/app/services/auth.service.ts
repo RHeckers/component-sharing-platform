@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { AuthData } from '../models/authData';
 import { Router } from '@angular/router';
+import { ErrorSuccessMsgService } from './error-success-msg.service';
 
 
 @Injectable({
@@ -13,33 +14,35 @@ export class AuthService {
   private token: string;
   private authenticated = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private errorSuccess: ErrorSuccessMsgService) { }
 
   getToken(){
     this.getAuthData();
     return this.token
   }
 
-  setToken(value){
+  setToken(value){ 
     this.token = value;
   }
-
 
   getAuthStatusListener(){
     return this.authenticated.asObservable();
   }
 
   getTokenStatus() {
-    this.getAuthData();
-    return this.http.get<boolean>('http://localhost:3000/api/auth/tokenstatus');
+    return this.http.get<boolean>('http://localhost:3000/api/auth/tokenstatus').subscribe(res => {
+      this.authenticated.next(res);
+      
+    }, error => {
+      this.authenticated.next(false);
+      console.log(error);
+    });
   }
 
 
   createUser(email: any, password: any){
     const authData: AuthData = { email: email.value, password: password.value}
-    console.log(authData);
-    return this.http.post('http://localhost:3000/api/auth/signup', authData)
-      
+    return this.http.post('http://localhost:3000/api/auth/signup', authData);
   }
 
   login(email: any, password: any){
@@ -50,8 +53,7 @@ export class AuthService {
       this.saveAuthData(token);
       this.router.navigate(['/']);
       this.authenticated.next(true);
-      
-    });
+    }, err => console.log(err));
   }
 
   logout(){

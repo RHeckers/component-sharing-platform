@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
         jwt.verify(token, "this is just some long string to hash the token");
         next();
     } catch (error) {
-        res.status(401).json({msg: 'No valid token found'});
+        res.status(401).json({msg: 'No valid token found'}); 
     }
 
 

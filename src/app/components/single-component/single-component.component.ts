@@ -29,8 +29,6 @@ export class SingleComponentComponent implements OnInit, AfterContentInit {
     this.description = this.component.description;
     this.gitRepo = this.component.gitRepo;
 
-    console.log('single comp: =>', this.gitRepo)
-
     //Sort the files, so the TS files show first and the css files show last
     this.sortFilesInput();    
   }  
@@ -45,7 +43,8 @@ export class SingleComponentComponent implements OnInit, AfterContentInit {
   openInStackblitz(stackblitzURL){
     let stackBlitzGitURL = stackblitzURL.split('github.com/')[1];
     sdk.openGithubProject(stackBlitzGitURL);
-    //Code to embed the project with StackBlitz
+    
+    //Code to embed the project with StackBlitz instead off opening it in a new window
     // sdk.embedGithubProject(
     //   'Elm or div id',
     //   stackBlitzGitURL,
@@ -63,8 +62,6 @@ export class SingleComponentComponent implements OnInit, AfterContentInit {
       let cssArrCode = []
       for(let i = 0; i < this.fileNames.length; i++){
         let name = this.fileNames[i]; 
-        let number = this.fileNames.length / 2;
-        let htmlIndex = parseInt(number.toString());
         
         if(name.includes('.ts')){
           tsArr.push(name);

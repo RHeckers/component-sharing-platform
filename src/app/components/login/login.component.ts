@@ -40,15 +40,6 @@ export class LoginComponent implements OnInit {
 
     //Place code to signin below
     this.authService.login(email, password);
-    // .subscribe(response => {
-    //   if(response.token) {
-    //     const token = response.token;
-    //     this.authService.setToken(token)
-    //     this.saveAuthData(token);
-    //     this.router.navigate(['/']);
-    //     this.autenticated.next(true);
-    //   };
-    // });
   }
 
   private submitRegister(email, password){
@@ -71,8 +62,12 @@ export class LoginComponent implements OnInit {
 
     //Place code to signup below
     this.authService.createUser(email, password).subscribe(res =>{
-      console.log(res)
+      email.value = '';
+      password.value = '';
+      this.errorSuccessMsg.centeredPopOverMsg('You have bin registered Successfully', 1000, 'success');
+      document.getElementById('mat-tab-label-0-0').click();
     });
-  }
+    
+  };
 
 }
