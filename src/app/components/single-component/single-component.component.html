@@ -13,8 +13,8 @@
           (click)='openInStackblitz(component.gitRepo)'
            alt="">
  
-        <i *ngIf="!component.favorite.includes('test')" class="far fa-star fa-lg"></i>
-        <i *ngIf="component.favorite.includes('test')" class="fas fa-star fa-lg"></i>
+        <i *ngIf="!component.favorite.includes('test') && userIsAuthenticated" class="far fa-star fa-lg"></i>
+        <i *ngIf="component.favorite.includes('test') && userIsAuthenticated" class="fas fa-star fa-lg"></i>
         <i class="far fa-copy fa-lg" (click)="copyContent($event)"></i>
         <a [href]="component.gitRepo" target="_blank"><i *ngIf="component.gitRepo"  class="fab fa-github fa-lg"></i></a> 
     </div>

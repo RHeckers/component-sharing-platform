@@ -1,13 +1,18 @@
-import { Component, OnInit, Input, AfterContentInit } from '@angular/core';
+import { Component, OnInit, Input, AfterContentInit, OnDestroy } from '@angular/core';
 import sdk from '@stackblitz/sdk';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-single-component',
   templateUrl: './single-component.component.html',
   styleUrls: ['./single-component.component.scss']
 })
-export class SingleComponentComponent implements OnInit, AfterContentInit {
+export class SingleComponentComponent implements OnInit, AfterContentInit, OnDestroy {
 
+  private authListenerSubscription: Subscription;
+
+  userIsAuthenticated: boolean = false;
   fileNames: Array<any>;
   gitRepo: string;
   names: Array<any>;
@@ -17,9 +22,13 @@ export class SingleComponentComponent implements OnInit, AfterContentInit {
   description: string;
   @Input() component: any;
 
-  constructor() { }
-
+  constructor(private authService: AuthService) { }
+ 
   ngOnInit() {
+    this.authListenerSubscription = this.authService.getAuthStatusListener().subscribe(isAuth => {
+      this.userIsAuthenticated = isAuth;
+    });
+    
     //Assign values
     this.tabscards = document.querySelectorAll('.mat-tab-body-content');
     this.fileNames = this.component.names;
@@ -30,20 +39,25 @@ export class SingleComponentComponent implements OnInit, AfterContentInit {
     this.gitRepo = this.component.gitRepo;
 
     //Sort the files, so the TS files show first and the css files show last
-    this.sortFilesInput();    
+    this.sortFilesInput();  
+    
+    
   }  
 
-  
   ngAfterContentInit(){
     //Function to change the material tab styling, so no scroll bar shows. 
     //Could not find no other way >>>, /deep/, ::ng-depp are deprecated and no replacement.
     this.changeMaterialTabStyling();
   }
 
+  ngOnDestroy() {
+    this.authListenerSubscription.unsubscribe(); 
+  }
+
   openInStackblitz(stackblitzURL){
     let stackBlitzGitURL = stackblitzURL.split('github.com/')[1];
     sdk.openGithubProject(stackBlitzGitURL);
-    
+
     //Code to embed the project with StackBlitz instead off opening it in a new window
     // sdk.embedGithubProject(
     //   'Elm or div id',
