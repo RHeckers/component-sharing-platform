@@ -9,7 +9,7 @@ export class MainControllesComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() { 
   }
 
 }

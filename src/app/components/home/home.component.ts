@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComponentsService } from 'src/app/services/components.service';
+import { AuthService } from './../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -13,12 +14,12 @@ export class HomeComponent implements OnInit {
   uploadedFile: File;
   pageTitle: string;
 
-  constructor(private componentServie: ComponentsService) { 
-    this.componentServie.updatedCollections.subscribe(val => this.components = [...val])
+  constructor(private componentServie: ComponentsService, private authService: AuthService) { 
+    this.componentServie.updatedCollections.subscribe(val => this.components = [...val]);
+    
   }
 
   ngOnInit() {
-
     this.componentServie.getComponents();
     this.pageTitle = 'Explore, upload and download Angular Components'
     this.fileInput = document.getElementById('fileInput');

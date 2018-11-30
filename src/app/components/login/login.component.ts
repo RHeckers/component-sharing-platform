@@ -39,14 +39,16 @@ export class LoginComponent implements OnInit {
     //Open loader here
 
     //Place code to signin below
-    this.authService.login(email, password).subscribe(response => {
-      if(response.token) {
-        const token = response.token;
-        this.authService.setToken(token)
-        this.saveAuthData(token);
-        this.router.navigate(['/']);
-      };
-    });
+    this.authService.login(email, password);
+    // .subscribe(response => {
+    //   if(response.token) {
+    //     const token = response.token;
+    //     this.authService.setToken(token)
+    //     this.saveAuthData(token);
+    //     this.router.navigate(['/']);
+    //     this.autenticated.next(true);
+    //   };
+    // });
   }
 
   private submitRegister(email, password){
@@ -71,10 +73,6 @@ export class LoginComponent implements OnInit {
     this.authService.createUser(email, password).subscribe(res =>{
       console.log(res)
     });
-  }
-
-  private saveAuthData(token: string){
-    localStorage.setItem('token', token);
   }
 
 }

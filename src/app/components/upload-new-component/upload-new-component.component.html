@@ -1,9 +1,12 @@
-<div class="fileUpload" id="fileUpload" (click)='setTitleAndDescription()'>
+<div *ngIf="userIsAuthenticated" class="fileUpload" id="fileUpload" (click)='setTitleAndDescription()'>
     <h2 class="fileUploadText" >Upload a new angular component <i class="far fa-file-alt"></i></h2>
+</div> 
+<div *ngIf="!userIsAuthenticated" class="fileUpload" id="loginProxyBtn" (click)='signInOrUp()'>
+    <h2 class="fileUploadText" >Signin to add components <i class="fas fa-sign-in-alt"></i></h2>
 </div> 
 
 <div class="titleAndDescription" id="addNewComponentInfo">
-  <div class="addNewContainer">
+  <div class="addNewContainer"> 
       <label for="title" class="addNewLabel">Title: </label>
       <input #title type="text" name="title" placeholder="Enter a title for your component">
       <br>
