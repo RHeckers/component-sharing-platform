@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 export class UploadNewComponentComponent implements OnInit, OnDestroy {
 
   private authListenerSubscription: Subscription;
+  private userSubscription: Subscription;
 
   userIsAuthenticated: boolean = false;
   uploadedFiles: Array<any> = [];
@@ -21,6 +22,7 @@ export class UploadNewComponentComponent implements OnInit, OnDestroy {
   componentToAdd: Object = {} as ComponentModel;
   fileUpload: HTMLElement;
   autenticated: boolean = false; 
+  creatorId: string;
 
   constructor( private componentServie: ComponentsService, private authService: AuthService, private router: Router) { }
  
@@ -30,6 +32,12 @@ export class UploadNewComponentComponent implements OnInit, OnDestroy {
 
     this.authListenerSubscription = this.authService.getAuthStatusListener().subscribe(isAuth => {
       this.userIsAuthenticated = isAuth;
+    });
+
+    this.userSubscription = this.authService.getUser().subscribe(user => {
+      if(user){
+        this.creatorId = user._id; 
+      }
     });
   }
 
@@ -63,11 +71,13 @@ export class UploadNewComponentComponent implements OnInit, OnDestroy {
   submitNewComponent(title, description, gitRepo){
     this.componentToAdd['names'] = this.uploadedFiles;
     this.componentToAdd['code'] = this.uploadedCode;
+    this.componentToAdd['creatorId'] = this.creatorId;
     this.componentToAdd['title'] = title.value;
     this.componentToAdd['favorite'] = [];
     this.componentToAdd['description'] = description.value;
     this.componentToAdd['gitRepo'] = gitRepo.value;
 
+    console.log(this.componentToAdd);
     // Send the newly created componented obj to the service, so It can be saved in the backend
     this.componentServie.addComponent(this.componentToAdd as ComponentModel)
     this.addNewComponentInfo.style.display = 'none';

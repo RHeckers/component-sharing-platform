@@ -65,7 +65,6 @@ export class LoginComponent implements OnInit {
       email.value = '';
       password.value = '';
       this.errorSuccessMsg.centeredPopOverMsg('You have bin registered Successfully', 1000, 'success');
-      console.log(document.getElementById('mat-tab-label-0-0'))
       let elm = document.querySelector('.mat-tab-label') as HTMLElement;
       elm.click();
     });

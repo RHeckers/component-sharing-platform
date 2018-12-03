@@ -25,6 +25,7 @@ export class ComponentsService {
             title: component.title,
             description: component.description,
             names: component.names,
+            creatorId: component.creatorId,
             code: component.code,
             favorite: component.favorite,
             gitRepo: component.gitRepo,
@@ -45,7 +46,7 @@ export class ComponentsService {
     .subscribe((res) => {
       console.log(res)
       // Add the component to the uploaded components
-      const newComponent: ComponentModel = {title: res.createdComponent.title, description: res.createdComponent.description, names: res.createdComponent.names, code: res.createdComponent.code, favorite: [], gitRepo: res.createdComponent.gitRepo, id: res.id}
+      const newComponent: ComponentModel = {title: res.createdComponent.title, description: res.createdComponent.description, names: res.createdComponent.names, creatorId: res.createdComponent.creatorId, code: res.createdComponent.code, favorite: [], gitRepo: res.createdComponent.gitRepo, id: res.id}
 
       this.allComponents.unshift(newComponent);
       this.updatedCollections.next([...this.allComponents]);

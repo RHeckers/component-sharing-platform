@@ -33,9 +33,13 @@ export class AuthService {
     return this.authenticated.asObservable();
   }
 
+  getUser(){
+    return this.user.asObservable();
+  }
+
   getTokenStatus() {
     return this.http.get<{auth: boolean, user: User}>('http://localhost:3000/api/auth/current').subscribe(res => {
-      console.log(res)
+      this.user.next(res.user);
       this.authenticated.next(res.auth);
       
     }, error => {

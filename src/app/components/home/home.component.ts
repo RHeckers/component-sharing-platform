@@ -15,7 +15,11 @@ export class HomeComponent implements OnInit {
   pageTitle: string;
 
   constructor(private componentServie: ComponentsService, private authService: AuthService) { 
-    this.componentServie.updatedCollections.subscribe(val => this.components = [...val]); 
+    this.componentServie.updatedCollections.subscribe(val => {
+      console.log(val)
+      this.components = [...val]
+    }); 
+    this.authService.getUser().subscribe(user => console.log(user))
     
   }
 

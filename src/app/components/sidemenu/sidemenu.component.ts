@@ -18,27 +18,32 @@ export class SidemenuComponent implements OnInit {
     //Temporary hardcoded categories array
     this.categories = [{
       index: "0",
-      category: "Form Components",
+      category: "Forms",
       subCategories: ['Datepicker', 'Autocomplete', 'Checkbox', 'Multiple inputs', 'Inputs', 'Select']
     },
     {
       index: "1",
-      category: "Navigation components",
+      category: "Navigation",
       subCategories: ['test', 'test', 'test']
     },
     {
       index: "2",
-      category: "Layout component",
+      category: "Layout",
       subCategories: ['test', 'test', 'test']
     },
     {
       index: "3",
-      category: "Indicator components", 
+      category: "Indicators", 
       subCategories: ['test', 'test', 'test']
     },
     {
       index: "4",
-      category: "Popup components",
+      category: "Directives", 
+      subCategories: ['test', 'test', 'test']
+    },
+    {
+      index: "5",
+      category: "Popup & modals",
       subCategories: ['test', 'test', 'test']
     }
   ];

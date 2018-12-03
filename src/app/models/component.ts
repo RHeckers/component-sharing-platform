@@ -3,7 +3,8 @@ export interface ComponentModel{
     description: string,
     names: Array<string>,
     code: Array<string>,
+    id: string,
+    creatorId: string,
     favorite?: Array<string>,
-    gitRepo?: string, 
-    id: string
+    gitRepo?: string
 }
