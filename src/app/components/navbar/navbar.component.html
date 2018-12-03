@@ -3,10 +3,11 @@
     <p id="mainLogo">LOGO</p>
   </div>
   <div class="navItemsBox">
-    <p class="navItem">Home</p>
+    <p class="navItem"  routerLink='/'>Home</p>
     <p class="navItem">About us</p>
     <p *ngIf="!userIsAuthenticated"  class="navItem" routerLink='/login'>login</p>
     <p *ngIf="!userIsAuthenticated" class="navItem" routerLink='/login'>register</p>
+    <p *ngIf="userIsAuthenticated" class="navItem" routerLink='/account'>account</p>
     <p class="navItem">contact</p>
   </div>
 </nav> 

@@ -18,6 +18,7 @@ import { MainControllesComponent } from './components/main-controlles/main-contr
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 import { AccordeonComponent } from './components/accordeon/accordeon.component';
 import { AuthInterceptorService } from './services/auth-interceptor';
+import { AccountComponent } from './components/account/account.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AuthInterceptorService } from './services/auth-interceptor';
     LoginComponent,
     MainControllesComponent,
     SidemenuComponent,
-    AccordeonComponent
+    AccordeonComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,

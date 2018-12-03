@@ -15,7 +15,7 @@ export class ComponentsService {
   constructor(private http: HttpClient) { }
 
   // Get the art collections from the backend
-  getComponents (): Observable<Array<ComponentModel>> {
+  getComponents(): void {
     // Make the API GET request
     this.http.get<Array<any>>('http://localhost:3000/api/components')
       .pipe(map((data) => {
@@ -35,15 +35,11 @@ export class ComponentsService {
       .subscribe((componentsData) => {
         this.allComponents = componentsData.reverse();
         this.updatedCollections.next([...this.allComponents]);
-      });
-
-      return 
-      // this.updatedCollections.next([...this.allComponents]);
-      // return this.updatedCollections;
-  }
+      }, err => console.log(err));
+  };
 
   // Add a component
-  addComponent(component: ComponentModel) {
+  addComponent(component: ComponentModel): void {
     // Make the post request
     this.http.post<any>('http://localhost:3000/api/components/add', component)
     .subscribe((res) => {
@@ -53,9 +49,6 @@ export class ComponentsService {
 
       this.allComponents.unshift(newComponent);
       this.updatedCollections.next([...this.allComponents]);
-    });
-    
-    
-    
-  }
+    }, err => console.log(err));
+  };
 }

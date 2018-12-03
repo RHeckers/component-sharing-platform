@@ -16,10 +16,11 @@ export class HomeComponent implements OnInit {
 
   constructor(private componentServie: ComponentsService, private authService: AuthService) { 
     this.componentServie.updatedCollections.subscribe(val => this.components = [...val]); 
-    this.authService.getTokenStatus();
+    
   }
 
   ngOnInit() {
+    this.authService.getTokenStatus();
     this.componentServie.getComponents();
     this.pageTitle = 'Explore, upload and download Angular Components'
     this.fileInput = document.getElementById('fileInput');

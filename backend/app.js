@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const mongoose = require('mongoose');
-
+const passport = require('passport');
 
 const componentCollectionRoutes = require('./routes/components');
 const authRoutes = require('./routes/auth');
@@ -20,7 +20,6 @@ mongoose.connect(db, { useNewUrlParser: true })
      console.log('Connection to database failed')
  });
 
-// app.use("/images", express.static(path.join("backend/images")));
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -32,6 +31,13 @@ app.use((req, res, next) => {
     next();
 });
 
+// Passport middleware
+app.use(passport.initialize());
+
+// Passport Config
+require('../config/passport')(passport);
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/api/components', componentCollectionRoutes);

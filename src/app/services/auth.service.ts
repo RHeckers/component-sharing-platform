@@ -1,6 +1,7 @@
+import { User } from './../models/user';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { AuthData } from '../models/authData';
 import { Router } from '@angular/router';
 import { ErrorSuccessMsgService } from './error-success-msg.service';
@@ -12,9 +13,12 @@ import { ErrorSuccessMsgService } from './error-success-msg.service';
 export class AuthService {
 
   private token: string;
+  private user = new BehaviorSubject<User>(undefined);
   private authenticated = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient, private router: Router, private errorSuccess: ErrorSuccessMsgService) { }
+  constructor(private http: HttpClient, private router: Router, private errorSuccess: ErrorSuccessMsgService) { 
+    
+  }
 
   getToken(){
     this.getAuthData();
@@ -30,8 +34,9 @@ export class AuthService {
   }
 
   getTokenStatus() {
-    return this.http.get<boolean>('http://localhost:3000/api/auth/tokenstatus').subscribe(res => {
-      this.authenticated.next(res);
+    return this.http.get<{auth: boolean, user: User}>('http://localhost:3000/api/auth/current').subscribe(res => {
+      console.log(res)
+      this.authenticated.next(res.auth);
       
     }, error => {
       this.authenticated.next(false);
@@ -47,12 +52,16 @@ export class AuthService {
 
   login(email: any, password: any){
     const authData: AuthData = { email: email.value, password: password.value}
-    this.http.post<{token: string}>('http://localhost:3000/api/auth/signin', authData).subscribe(res => {
+    this.http.post<{token: string, user: any}>('http://localhost:3000/api/auth/signin', authData).subscribe(res => {
       const token = res.token;
+
       this.setToken(token)
       this.saveAuthData(token);
       this.router.navigate(['/']);
+
       this.authenticated.next(true);
+      this.user = res.user
+      console.log(this.user);
     }, err => console.log(err));
   }
 
@@ -73,6 +82,7 @@ export class AuthService {
       return
     }
     this.token = token;
+    
   }
 
   private clearAuthData(){
